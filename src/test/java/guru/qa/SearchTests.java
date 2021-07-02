@@ -1,4 +1,4 @@
-package guru.qa.tests;
+package guru.qa;
 
 import org.junit.jupiter.api.Test;
 
