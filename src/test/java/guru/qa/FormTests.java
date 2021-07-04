@@ -28,30 +28,32 @@ public class FormTests {
 
         open("/automation-practice-form");
         $("#firstName").setValue("Shiva");
-
         $("#lastName").setValue("Ivanova");
-        $(("#genterWrapper")).click();
-        $(("#hobbies-checkbox-2")).parent().click();
-
+        $(("#genterWrapper")).$(byText("Other")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         $(("#dateOfBirthInput")).click();
         $(".react-datepicker__month-select").selectOption("January");
         $(".react-datepicker__year-select").selectOption("1984");
         $((".react-datepicker__day--023")).click();
-        $("#uploadPicture").uploadFile(new File("src/test/img/qa.png"));
+        $("#subjectsInput").setValue("comp").pressEnter();
+        $("#uploadPicture").uploadFile(new File("src/test/resources/qa.png"));
         $("#userNumber").setValue("1234567890");
         $("#currentAddress").setValue("World");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
-
-        $("#submit").scrollTo();
-        $("#submit").click();
+        $("#submit").scrollTo().click();
 
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-
         $(".table-responsive").shouldHave(
                 text("Shiva Ivanova"),
                 text("23 January,1984"),
+                text("World"),
+                text("qa.png"),
+                text("NCR Delhi"),
+                text("Other"),
+                text("Reading"),
+                text("Computer Science"),
                 text("1234567890")
         );
 
