@@ -4,16 +4,12 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-
-
+import org.openqa.selenium.Keys;
 import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-
-
 public class FormTests {
 
     @BeforeAll
@@ -21,11 +17,8 @@ public class FormTests {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.startMaximized = true;
     }
-
     @Test
     void fillForm() {
-
-
         open("/automation-practice-form");
         $("#firstName").setValue("Shiva");
         $("#lastName").setValue("Ivanova");
@@ -35,6 +28,11 @@ public class FormTests {
         $(".react-datepicker__month-select").selectOption("January");
         $(".react-datepicker__year-select").selectOption("1984");
         $((".react-datepicker__day--023")).click();
+//        альтеонативный выбор даты в календаре
+//        $("#dateOfBirthInput").click();
+//        $("#dateOfBirthInput").sendKeys(Keys.CONTROL, "a");
+//        $("#dateOfBirthInput").sendKeys(Keys.SPACE);
+//        $("#dateOfBirthInput").setValue("23 January 1984").pressEnter();
         $("#subjectsInput").setValue("comp").pressEnter();
         $("#uploadPicture").uploadFile(new File("src/test/resources/qa.png"));
         $("#userNumber").setValue("1234567890");
@@ -56,8 +54,5 @@ public class FormTests {
                 text("Computer Science"),
                 text("1234567890")
         );
-
-
     }
-
 }
