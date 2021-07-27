@@ -55,6 +55,11 @@ public class RegistrationPage {
             $("#currentAddress").setValue(currentAddress);
 
     }
+    public RegistrationPage typeEmail(String email){
+        $("#userEmail").setValue(email);
+        return this;
+    }
+
      public void setStateCity(String state,String city) {
          $("#react-select-3-input").setValue(state).pressEnter();
          $("#react-select-4-input").setValue(city).pressEnter();
